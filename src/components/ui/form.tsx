@@ -8,7 +8,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/helpers/cn";
 
-import { Typography, typographyVariants } from "./typography";
+import { typographyVariants } from "./typography";
 
 const Form = FormProvider;
 
@@ -103,19 +103,6 @@ const FormControl = ({ ...props }: React.ComponentProps<typeof Slot>) => {
   );
 };
 
-const FormDescription = ({ className, ...props }: React.ComponentProps<"p">) => {
-  const { formDescriptionId } = useFormField();
-
-  return (
-    <Typography
-      data-slot='form-description'
-      id={formDescriptionId}
-      className={cn("text-muted-foreground text-sm", className)}
-      {...props}
-    />
-  );
-};
-
 const FormMessage = ({ className, ...props }: React.ComponentProps<"p">) => {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error?.message ?? "") : props.children;
@@ -136,13 +123,4 @@ const FormMessage = ({ className, ...props }: React.ComponentProps<"p">) => {
   );
 };
 
-export {
-  useFormField,
-  Form,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage,
-  FormField
-};
+export { useFormField, Form, FormItem, FormLabel, FormControl, FormMessage, FormField };
