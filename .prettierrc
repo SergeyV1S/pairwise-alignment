@@ -9,7 +9,7 @@
   "endOfLine": "lf",
   "arrowParens": "always",
   "importOrder": [
-    "^(react|react-dom|@hookform|zod|@tanstack/*|zod|react-hook-form)$",
+    "^(react|react-dom|@hookform/resolvers/zod|zod|@tanstack/*|zod|react-hook-form)$",
     "<THIRD_PARTY_MODULES>",
     "^@/(.*)$",
     "^[./]"
