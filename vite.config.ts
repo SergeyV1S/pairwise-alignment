@@ -5,6 +5,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: "/pairwise-alignment/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src")

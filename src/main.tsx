@@ -6,6 +6,7 @@ import "@/assets/index.css";
 import { AligmentForm } from "@/components/AligmentForm";
 import { AlignmentVisualizer } from "@/components/AlignmentVisualizer";
 import { Container } from "@/components/Container";
+import { Toaster } from "@/components/ui";
 import type { TAligmentFormData } from "@/lib";
 
 const App = () => {
@@ -22,10 +23,13 @@ const App = () => {
   };
 
   return (
-    <Container>
-      <AligmentForm onAligmentFormSubmit={onAligmentFormSubmit} />
-      <AlignmentVisualizer {...aligmentResult} />
-    </Container>
+    <>
+      <Container>
+        <AligmentForm onAligmentFormSubmit={onAligmentFormSubmit} />
+        <AlignmentVisualizer {...aligmentResult} />
+      </Container>
+      <Toaster />
+    </>
   );
 };
 
