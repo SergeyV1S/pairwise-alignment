@@ -1,6 +1,6 @@
 # Pairwise Alignment
 
-**[Перейти на веб-приложение](link)**
+**[Перейти на веб-приложение](https://sergeyv1s.github.io/pairwise-alignment/)**
 
 Этот проект является реализацией тестового задания на **React**.
 
