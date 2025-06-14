@@ -32,15 +32,15 @@ export const AligmentForm = ({ onAligmentFormSubmit }: IAligmentFormProps) => {
     <Form {...aligmentForm}>
       <form
         onSubmit={aligmentForm.handleSubmit(onAligmentFormSubmit)}
-        className='flex items-center flex-col gap-5 justify-center'
+        className='flex items-center flex-col gap-10 justify-center w-full'
       >
-        <div className='flex flex-wrap items-center justify-center gap-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 w-full'>
           <FormField
             control={aligmentForm.control}
             name='firstSequence'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Последовательность 1</FormLabel>
+                <FormLabel>Последовательность 1*</FormLabel>
                 <FormControl>
                   <Input placeholder='Введеите первую последовательность' {...field} />
                 </FormControl>
@@ -53,7 +53,7 @@ export const AligmentForm = ({ onAligmentFormSubmit }: IAligmentFormProps) => {
             name='secondSequence'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Последовательность 2</FormLabel>
+                <FormLabel>Последовательность 2*</FormLabel>
                 <FormControl>
                   <Input placeholder='Введеите вторую последовательность' {...field} />
                 </FormControl>
@@ -62,7 +62,9 @@ export const AligmentForm = ({ onAligmentFormSubmit }: IAligmentFormProps) => {
             )}
           />
         </div>
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' size='lg' typographyVariant={{ variant: "s_medium" }}>
+          Выровнять
+        </Button>
       </form>
     </Form>
   );
