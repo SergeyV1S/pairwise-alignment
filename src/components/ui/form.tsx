@@ -8,7 +8,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/helpers/cn";
 
-import { typographyVariants } from "./typography";
+import { Typography } from "./typography";
 
 const Form = FormProvider;
 
@@ -61,15 +61,15 @@ type FormItemContextValue = {
 
 const FormItemContext = React.createContext<FormItemContextValue>({} as FormItemContextValue);
 
-function FormItem({ className, ...props }: React.ComponentProps<"div">) {
+const FormItem = ({ className, ...props }: React.ComponentProps<"div">) => {
   const id = React.useId();
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div data-slot='form-item' className={cn("grid gap-2", className)} {...props} />
+      <div data-slot='form-item' className={cn("relative grid gap-2", className)} {...props} />
     </FormItemContext.Provider>
   );
-}
+};
 
 const FormLabel = ({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) => {
   const { error, formItemId } = useFormField();
@@ -78,11 +78,7 @@ const FormLabel = ({ className, ...props }: React.ComponentProps<typeof LabelPri
     <Label
       data-slot='form-label'
       data-error={!!error}
-      className={cn(
-        "data-[error=true]:text-destructive",
-        typographyVariants({ variant: "xs" }),
-        className
-      )}
+      className={cn("data-[error=true]:text-destructive", className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -103,23 +99,23 @@ const FormControl = ({ ...props }: React.ComponentProps<typeof Slot>) => {
   );
 };
 
-const FormMessage = ({ className, ...props }: React.ComponentProps<"p">) => {
+const FormMessage = ({ className, children, ...props }: React.ComponentProps<"p">) => {
   const { error, formMessageId } = useFormField();
-  const body = error ? String(error?.message ?? "") : props.children;
+  const body = error ? String(error?.message) : children;
 
   if (!body) {
     return null;
   }
 
   return (
-    <p
-      data-slot='form-message'
+    <Typography
+      variant='xs'
       id={formMessageId}
-      className={cn("text-destructive text-sm", className)}
+      className={cn("text-[0.8rem] font-medium text-destructive", className)}
       {...props}
     >
       {body}
-    </p>
+    </Typography>
   );
 };
 
